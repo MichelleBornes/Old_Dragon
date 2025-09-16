@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Ficha do Personagem</h2>
+<p><strong>Nome:</strong> {{ personagem.nome }}</p>
+
+<h3>Raça</h3>
+{% if personagem.raca %}
+  <p><strong>{{ personagem.raca.nome }}</strong></p>
+  <p>Movimento: {{ personagem.raca.movimento }}m | Infravisão: {{ personagem.raca.infravisao }}m | Alinhamento: {{ personagem.raca.alinhamento }}</p>
+  <p>Habilidades: {{ personagem.raca.habilidades | join(', ') }}</p>
+{% endif %}
+
+<h3>Classe</h3>
+{% if personagem.classe %}
+  <p><strong>{{ personagem.classe.nome }}</strong></p>
+  <p>PVs iniciais: {{ personagem.classe.pv_base }}</p>
+  <p>Habilidades: {{ personagem.classe.habilidades | join(', ') }}</p>
+{% endif %}
+
+<h3>Atributos</h3>
+<ul>
+  {% for k, v in personagem.atributos.items() %}
+    <li>{{ k }}: {{ v }}</li>
+  {% endfor %}
+</ul>
+
+<p><a href="{{ url_for('index') }}">Criar outro personagem</a></p>
+{% endblock %}

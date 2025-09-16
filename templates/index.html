@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="{{ url_for('generate') }}" method="post">
+  <label>Nome do personagem:
+    <input type="text" name="nome" required>
+  </label>
+
+  <p>Escolha o estilo de distribuição de atributos:</p>
+  <label><input type="radio" name="estilo" value="classico" checked> Clássico (3d6 em ordem)</label>
+  <label><input type="radio" name="estilo" value="aventureiro"> Aventureiro (3d6, distribua)</label>
+  <label><input type="radio" name="estilo" value="heroico"> Heróico (4d6, descarta o menor)</label>
+
+  <p>Você também poderá escolher Raça e Classe depois de gerar os atributos.</p>
+
+  <button type="submit">Gerar</button>
+</form>
+{% endblock %}

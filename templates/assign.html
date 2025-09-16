@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Distribuir Rolagens ({{ estilo }})</h2>
+
+<p>Rolagens disponíveis:</p>
+<ul class="rolagens">
+  {% for r in rolagens %}
+    <li>{{ r }}</li>
+  {% endfor %}
+</ul>
+
+<form method="post">
+  <p>Escolha um valor para cada atributo (cada valor só pode ser usado uma vez):</p>
+  {% for atr in atributos_base %}
+    <label>{{ atr }}:
+      <select name="{{ atr }}" required>
+        <option value="">-- Escolha --</option>
+        {% for r in rolagens %}
+          <option value="{{ r }}">{{ r }}</option>
+        {% endfor %}
+      </select>
+    </label>
+  {% endfor %}
+  <button type="submit">Confirmar distribuição</button>
+</form>
+{% endblock %}

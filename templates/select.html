@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Escolher Raça e Classe</h2>
+
+<h3>Atributos</h3>
+<ul>
+  {% for k, v in atributos.items() %}
+    <li>{{ k }}: {{ v }}</li>
+  {% endfor %}
+</ul>
+
+<form method="post">
+  <label>Raça:
+    <select name="raca" required>
+      <option value="">-- Escolha --</option>
+      {% for r in racas %}
+        <option value="{{ r }}">{{ r }}</option>
+      {% endfor %}
+    </select>
+  </label>
+
+  <label>Classe:
+    <select name="classe" required>
+      <option value="">-- Escolha --</option>
+      {% for c in classes %}
+        <option value="{{ c }}">{{ c }}</option>
+      {% endfor %}
+    </select>
+  </label>
+
+  <button type="submit">Criar Personagem</button>
+</form>
+{% endblock %}

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <link rel="icon" href="https://thumbs.dreamstime.com/b/dragon-symbol-120578740.jpg">
+  <meta charset="utf-8">
+  <title>Criação de Personagem - Old Dragon</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+</head>
+<body>
+  <h1>Old Dragon</h1>
+  <h2>Criação de Personagem</h2>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class="error">
+        {% for m in messages %}<li>{{ m }}</li>{% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  <div class="card">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>
